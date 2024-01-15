@@ -43,6 +43,7 @@ describe("Choose Question Best Answer", () => {
 		const question = makeQuestion({
 			authorId: new UniqueEntityId("author-1"),
 		});
+		
 		const answer = makeAnswer({
 			questionId: question.id,
 		});
