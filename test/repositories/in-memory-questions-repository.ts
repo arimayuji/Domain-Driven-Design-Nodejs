@@ -1,3 +1,4 @@
+import { PaginationParams } from "@/core/repositories/pagination-params";
 import { QuestionsRepository } from "@/domain/forum/application/repositories/questions-respository";
 import { Question } from "@/domain/forum/enterprise/entities/question";
 
@@ -11,6 +12,15 @@ export class InMemoryQuestionsRepository implements QuestionsRepository {
 		const itemIndex = this.items.findIndex((item) => item.id === question.id);
 
 		this.items[itemIndex] = question;
+	}
+	async findManyLatest({ page }: PaginationParams) {
+		const resultsPerPage = 20;
+
+		const questions = this.items
+			.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+			.slice((page - 1) * resultsPerPage, page * resultsPerPage);
+
+		return questions;
 	}
 	async findBySlug(slug: string) {
 		const question = this.items.find((item) => item.slug.value === slug);
