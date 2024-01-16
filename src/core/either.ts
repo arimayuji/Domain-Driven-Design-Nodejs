@@ -14,6 +14,7 @@ export class Left<L, R> {
 		return true;
 	}
 }
+
 // Success
 export class Right<L, R> {
 	readonly value: R;

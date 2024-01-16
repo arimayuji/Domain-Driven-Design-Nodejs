@@ -28,15 +28,15 @@ describe("Fetch Answer Comments", () => {
 			makeAnswerComment({ answerId })
 		);
 
-		const { answerComments } = await sut.execute({
+		const result = await sut.execute({
 			answerId: answerId.toString(),
 			page: 1,
 		});
 
-		expect(answerComments).toHaveLength(3);
+		expect(result.value?.answerComments).toHaveLength(3);
 	});
 
-	it.skip("should be able to fetch paginated answer comments", async () => {
+	it("should be able to fetch paginated answer comments", async () => {
 		const answerId = new UniqueEntityId("answer-1");
 
 		for (let i = 1; i <= 22; i++) {
@@ -45,11 +45,11 @@ describe("Fetch Answer Comments", () => {
 			);
 		}
 
-		const { answerComments } = await sut.execute({
+		const result = await sut.execute({
 			answerId: answerId.toString(),
 			page: 2,
 		});
 
-		expect(answerComments).toHaveLength(2);
+		expect(result.value?.answerComments).toHaveLength(2);
 	});
 });

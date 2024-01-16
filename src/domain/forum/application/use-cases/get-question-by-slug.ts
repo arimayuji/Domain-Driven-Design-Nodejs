@@ -1,26 +1,31 @@
-import { Question } from '../../enterprise/entities/question'
-import { QuestionsRepository } from '../repositories/questions-respository'
+import { Either, left, right } from "@/core/either";
+import { Question } from "../../enterprise/entities/question";
+import { QuestionsRepository } from "../repositories/questions-respository";
+import { ResourceNotFoundError } from "./errors/resource-not-found-error";
 
 interface GetQuestionBySlugUseCaseRequest {
-  slug: string
+	slug: string;
 }
 
-interface GetQuestionBySlugUseCaseResponse {
-  question: Question
-}
+type GetQuestionBySlugUseCaseResponse = Either<
+	ResourceNotFoundError,
+	{
+		question: Question;
+	}
+>;
 
 export class GetQuestionBySlugUseCase {
-  constructor(private questionsRepository: QuestionsRepository) {}
+	constructor(private questionsRepository: QuestionsRepository) {}
 
-  async execute({
-    slug,
-  }: GetQuestionBySlugUseCaseRequest): Promise<GetQuestionBySlugUseCaseResponse> {
-    const question = await this.questionsRepository.findBySlug(slug)
+	async execute({
+		slug,
+	}: GetQuestionBySlugUseCaseRequest): Promise<GetQuestionBySlugUseCaseResponse> {
+		const question = await this.questionsRepository.findBySlug(slug);
 
-    if (!question) {
-      throw new Error('Question not found')
-    }
+		if (!question) {
+			return left(new ResourceNotFoundError());
+		}
 
-    return { question }
-  }
+		return right({ question });
+	}
 }
