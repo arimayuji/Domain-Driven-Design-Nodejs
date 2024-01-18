@@ -1,6 +1,6 @@
-import { AnswersRepository } from "../repositories/answer-respository";
+import { AnswersRepository } from "../repositories/answer-repository";
 import { Question } from "../../enterprise/entities/question";
-import { QuestionsRepository } from "../repositories/questions-respository";
+import { QuestionsRepository } from "../repositories/questions-repository";
 import { Either, left, right } from "@/core/either";
 import { ResourceNotFoundError } from "./errors/resource-not-found-error";
 import { NotAllowedError } from "./errors/not-allowed-error";

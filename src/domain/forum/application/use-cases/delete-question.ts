@@ -1,5 +1,5 @@
 import { Either, left, right } from "@/core/either";
-import { QuestionsRepository } from "../repositories/questions-respository";
+import { QuestionsRepository } from "../repositories/questions-repository";
 import { NotAllowedError } from "./errors/not-allowed-error";
 import { ResourceNotFoundError } from "./errors/resource-not-found-error";
 

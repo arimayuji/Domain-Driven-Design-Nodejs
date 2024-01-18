@@ -1,6 +1,6 @@
 import { Either, right } from "@/core/either";
 import { Answer } from "../../enterprise/entities/answer";
-import { AnswersRepository } from "../repositories/answer-respository";
+import { AnswersRepository } from "../repositories/answer-repository";
 
 interface FetchQuestionsAnswersUseCaseRequest {
 	questionId: string;

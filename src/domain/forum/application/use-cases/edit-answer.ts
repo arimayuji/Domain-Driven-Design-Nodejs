@@ -1,6 +1,6 @@
 import { Either, left, right } from "@/core/either";
 import { Answer } from "../../enterprise/entities/answer";
-import { AnswersRepository } from "../repositories/answer-respository";
+import { AnswersRepository } from "../repositories/answer-repository";
 import { NotAllowedError } from "./errors/not-allowed-error";
 import { ResourceNotFoundError } from "./errors/resource-not-found-error";
 import { AnswerAttachment } from "../../enterprise/entities/answer-attachment";
