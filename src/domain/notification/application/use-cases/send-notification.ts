@@ -29,7 +29,7 @@ export class SendNotificationUseCase {
 			title,
 			content,
 		});
-
+       
 		await this.notificationsRepository.create(notification);
 
 		return right({ notification });

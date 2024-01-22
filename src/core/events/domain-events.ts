@@ -6,7 +6,6 @@ import { DomainEvent } from "./domain-event";
 type DomainEventCallback = (event: any) => void;
 
 export class DomainEvents {
-
 	// objeto <chave que representa o evento,subs> que representa os sub
 
 	private static handlersMap: Record<string, DomainEventCallback[]> = {};
@@ -14,7 +13,7 @@ export class DomainEvents {
 	// quais entidades/agregados da aplicação possuem eventos pendentes. Marca quais agregados possuem eventos porém não estão prontos.
 
 	private static markedAggregates: AggregateRoot<any>[] = [];
-    
+
 	// sinaliza que um evento está pronto para ser disponibilizado.
 
 	public static markAggregateForDispatch(aggregate: AggregateRoot<any>) {
